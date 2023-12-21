@@ -1,0 +1,22 @@
+version: "3"
+services:
+# docker pull jupyter/datascience-notebook
+  datascience-notebook:
+    container_name: datascience-notebook
+    user: root
+    hostname: datascience-notebook
+    image: "jupyter/datascience-notebook:latest"
+    ports:
+      - 8888:8888
+    volumes:
+      - datascience-notebook:/assets
+      - ./work:/home/jovyan/work
+
+volumes:
+  datascience-notebook:
+    external: true
+
+networks:
+  default:
+    external:
+      name: poc
